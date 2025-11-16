@@ -3,384 +3,288 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selim Evren Turhan | Yazılım Geliştirici & Tasarımcı</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Selim Evren Turhan | BÖTE Öğretmeni Portfolyo</title>
+    <!-- Tailwind CSS Yüklemesi -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter Font -->
+    <!-- Font: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
-        /* Inter fontunu varsayılan olarak ayarla */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f8f8; /* Açık gri arka plan */
+            background-color: #0f172a; /* Slate-900: Koyu dijital arka plan */
+            color: #e2e8f0; /* Slate-200: Açık metin */
         }
-        /* Custom scrollbar for aesthetics */
-        ::-webkit-scrollbar {
-            width: 8px;
+        /* Özel Neon Glow Shadow Tanımı */
+        .shadow-neon-sm {
+            box-shadow: 0 0 5px #06b6d4, 0 0 10px rgba(6, 182, 212, 0.3); /* Cyan-500 Neon */
         }
-        ::-webkit-scrollbar-thumb {
-            background: #9ca3af; /* Tailwind gray-400 */
-            border-radius: 4px;
+        .shadow-neon-lg {
+            box-shadow: 0 0 15px #06b6d4, 0 0 30px rgba(6, 182, 212, 0.5);
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6b7280; /* Tailwind gray-500 */
+
+        /* Dijital Temaya Uygun Başlık Ayırıcı */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px; 
+            height: 4px;
+            background-color: #06b6d4; /* Cyan-500 */
+            margin: 12px auto 40px auto; 
+            box-shadow: 0 0 8px #06b6d4; /* Glow added */
         }
-        .section-padding {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
+
+        /* Card Hover ve Animasyon Efekti için Temel Sınıf */
+        .digital-card {
+            transition: all 0.3s ease-in-out;
+            border: 1px solid rgba(45, 212, 191, 0.1); /* Teal border */
         }
-        .hero-bg {
-            /* Hafif bir degrade arka plan */
-            background: linear-gradient(135deg, #1f2937 0%, #374151 100%); /* Tailwind gray-800 to gray-700 */
-        }
-        .card-shadow {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        .nav-link:hover {
-            color: #4b5563; /* Tailwind gray-600 */
-        }
-        /* Basit bir sallanma animasyonu */
-        @keyframes pulse-once {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .animate-pulse-once:hover {
-            animation: pulse-once 0.3s ease-in-out;
+
+        .digital-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 0 15px #06b6d4, 0 0 30px rgba(6, 182, 212, 0.4);
+            border-color: #06b6d4;
         }
     </style>
 </head>
-<body>
+<body class="text-slate-200">
 
-    <!-- Üst Navigasyon Çubuğu (Sabit) -->
-    <nav class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo/İsim -->
-                <div class="flex-shrink-0">
-                    <a href="#home" class="text-xl font-extrabold text-gray-800 tracking-wider">S.E. TURHAN</a>
-                </div>
-                <!-- Navigasyon Bağlantıları -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#hakkimda" class="nav-link text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out font-medium">Hakkımda</a>
-                    <a href="#beceriler" class="nav-link text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out font-medium">Beceriler</a>
-                    <a href="#projeler" class="nav-link text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out font-medium">Projeler</a>
-                    <a href="#iletisim" class="nav-link text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out font-medium">İletişim</a>
-                </div>
-                <!-- Mobil Menü Düğmesi -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
+    <!-- Ana Konteyner -->
+    <div id="app" class="min-h-screen">
 
-        <!-- Mobil Menü İçeriği (Gizli) -->
-        <div class="md:hidden hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#hakkimda" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Hakkımda</a>
-                <a href="#beceriler" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Beceriler</a>
-                <a href="#projeler" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Projeler</a>
-                <a href="#iletisim" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50" onclick="document.getElementById('mobile-menu').classList.add('hidden')">İletişim</a>
-            </div>
-        </div>
-    </nav>
+        <!-- Header / Navigasyon (Koyu Tema) -->
+        <header class="bg-slate-900 shadow-2xl sticky top-0 z-10 border-b border-cyan-700/50">
+            <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+                <a href="#" class="text-2xl font-extrabold text-cyan-400 tracking-widest hover:text-cyan-300 transition duration-300">
+                    SELIM TURHAN
+                </a>
+                <div class="space-x-6 hidden md:flex">
+                    <a href="#hakkimda" class="text-slate-300 hover:text-cyan-400 transition duration-150 transform hover:scale-105">Hakkımda</a>
+                    <a href="#uzmanliklar" class="text-slate-300 hover:text-cyan-400 transition duration-150 transform hover:scale-105">Uzmanlıklar</a>
+                    <a href="#projeler" class="text-slate-300 hover:text-cyan-400 transition duration-150 transform hover:scale-105">Projeler</a>
+                    <a href="#iletisim" class="text-slate-300 hover:text-cyan-400 transition duration-150 transform hover:scale-105">İletişim</a>
+                </div>
+            </nav>
+        </header>
 
-    <main>
-        <!-- Ana Bölüm (Hero) -->
-        <section id="home" class="hero-bg text-white section-padding pt-20 sm:pt-32 pb-20 sm:pb-40">
+        <!-- 1. Hero / Giriş Bölümü -->
+        <section id="hakkimda" class="pt-24 pb-36 bg-gradient-to-br from-slate-900 to-gray-900 border-b-4 border-cyan-600/50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <div class="flex flex-col items-center">
-                    <!-- Avatar/Placeholder Image -->
-                    <img src="https://placehold.co/150x150/10b981/ffffff?text=SET" alt="Selim Evren Turhan Profil Fotoğrafı" class="h-32 w-32 rounded-full border-4 border-emerald-400 object-cover mb-6 shadow-xl">
-                    
-                    <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight mb-4">
-                        Selim Evren Turhan
-                    </h1>
-                    <p class="text-xl sm:text-2xl font-light text-gray-300 max-w-3xl mb-10">
-                        Yazılım Geliştirici | UI/UX Meraklısı | Problem Çözücü
-                    </p>
-                    <a href="#projeler" class="px-8 py-3 border border-transparent text-base font-medium rounded-lg text-gray-900 bg-emerald-400 hover:bg-emerald-300 transition duration-300 ease-in-out animate-pulse-once shadow-lg">
-                        Projelerimi İncele
+                <div class="mb-10">
+                    <!-- Profesyonel Profil Resmi Placeholder (Daha Güçlü Neon Çerçeve) -->
+                    <div class="mx-auto w-40 h-40 bg-cyan-800/20 rounded-full flex items-center justify-center border-4 border-cyan-400 shadow-neon-sm">
+                        <!-- SVG Icon (Daha Teknolojik) -->
+                        <svg class="w-20 h-20 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                </div>
+                <h2 class="text-xl font-medium text-cyan-400 mb-3 tracking-widest animate-pulse">CONNECTION ESTABLISHED</h2>
+                <h1 class="text-7xl font-extrabold text-white mb-6 tracking-tight">
+                    SELİM EVREN TURHAN
+                </h1>
+                <p class="text-2xl text-slate-400 max-w-4xl mx-auto">
+                    BÖTE Öğretmeni | Donanım, Yapay Zeka, Proje ve Stratejik Planlama Alanlarında Uzmanlaşmış Teknoloji Mimarı.
+                </p>
+                <div class="mt-12">
+                    <a href="#uzmanliklar" class="inline-flex items-center px-10 py-4 text-lg font-bold rounded-xl text-slate-900 bg-cyan-400 hover:bg-cyan-300 transition duration-500 transform hover:scale-105 shadow-neon-lg">
+                        UZMANLIK MATRİSİNİ GÖRÜNTÜLE &gt;&gt;
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Hakkımda Bölümü -->
-        <section id="hakkimda" class="bg-white section-padding">
+        <!-- 2. Uzmanlık Alanları Bölümü -->
+        <section id="uzmanliklar" class="py-24 bg-slate-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-extrabold text-gray-900 text-center mb-12">Hakkımda</h2>
-                
-                <div class="max-w-4xl mx-auto bg-gray-50 p-8 rounded-xl card-shadow">
-                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-                        Merhaba, ben Selim Evren Turhan. Teknolojinin sınırlarını zorlamayı ve kullanıcı odaklı çözümler geliştirmeyi seven bir yazılım geliştiricisiyim. Kariyerime, hem ön yüz hem de arka yüz teknolojilerinde derinleşerek, uçtan uca çalışabilen modern web uygulamaları geliştirmeye odaklandım.
-                    </p>
-                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-                        Özellikle JavaScript ekosistemi (React, Node.js) ve bulut tabanlı hizmetler konusunda deneyim sahibiyim. Her zaman yeni teknolojileri öğrenmeye ve en iyi uygulamaları projelerime entegre etmeye hevesliyim.
-                    </p>
-                    <div class="text-center mt-8">
-                        <a href="#iletisim" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gray-800 hover:bg-gray-700 transition duration-300 ease-in-out">
-                            Detaylı CV'mi İsteyin
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <h2 class="section-title text-4xl font-bold text-white text-center">Uzmanlık Alanı Protokolleri</h2>
 
-        <!-- Beceriler Bölümü -->
-        <section id="beceriler" class="bg-gray-100 section-padding">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-extrabold text-gray-900 text-center mb-12">Teknik Beceriler</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Frontend -->
-                    <div class="bg-white p-6 rounded-xl card-shadow hover:scale-[1.02] transition duration-300">
-                        <h3 class="text-2xl font-bold text-emerald-600 mb-4">Ön Yüz (Frontend)</h3>
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-center">
-                                <span class="text-emerald-500 mr-2">✓</span> React, Next.js
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-emerald-500 mr-2">✓</span> JavaScript (ES6+), TypeScript
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-emerald-500 mr-2">✓</span> HTML5, CSS3, Tailwind CSS
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-emerald-500 mr-2">✓</span> Durum Yönetimi (Redux, Zustand)
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Backend -->
-                    <div class="bg-white p-6 rounded-xl card-shadow hover:scale-[1.02] transition duration-300">
-                        <h3 class="text-2xl font-bold text-blue-600 mb-4">Arka Yüz (Backend)</h3>
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-center">
-                                <span class="text-blue-500 mr-2">✓</span> Node.js, Express.js
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-blue-500 mr-2">✓</span> Python, Django/Flask
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-blue-500 mr-2">✓</span> Veritabanları (PostgreSQL, MongoDB, Firestore)
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-blue-500 mr-2">✓</span> RESTful API Geliştirme
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Diğer Araçlar -->
-                    <div class="bg-white p-6 rounded-xl card-shadow hover:scale-[1.02] transition duration-300">
-                        <h3 class="text-2xl font-bold text-indigo-600 mb-4">Araçlar & Diğer</h3>
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-center">
-                                <span class="text-indigo-500 mr-2">✓</span> Git, GitHub/GitLab
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-indigo-500 mr-2">✓</span> Bulut (AWS, Firebase, Vercel)
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-indigo-500 mr-2">✓</span> Docker
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-indigo-500 mr-2">✓</span> UI/UX Tasarım İlkeleri
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projeler Bölümü -->
-        <section id="projeler" class="bg-white section-padding">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-extrabold text-gray-900 text-center mb-12">Öne Çıkan Projeler</h2>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <!-- Proje 1 -->
-                    <div class="bg-gray-50 p-6 rounded-xl card-shadow flex flex-col hover:shadow-xl transition duration-300">
-                        <!-- Yeni Eklenen Proje Görseli -->
-                        <img src="https://placehold.co/400x200/5eead4/1f2937?text=E-Ticaret+Demo" alt="E-Ticaret Platformu Önizlemesi" class="mb-4 rounded-lg w-full h-auto object-cover">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">E-Ticaret Platformu (React/Node)</h3>
-                        <p class="text-gray-600 mb-4 flex-grow">Tam yığın (Full-stack) olarak geliştirdiğim, kullanıcı kimlik doğrulaması, sepet yönetimi ve ödeme entegrasyonu (mock) özelliklerine sahip yüksek performanslı bir e-ticaret çözümü.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">React</span>
-                            <span class="bg-green-200 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Node.js</span>
-                            <span class="bg-gray-200 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">MongoDB</span>
+                    <!-- 1. Donanım ve Yazılım -->
+                    <div class="digital-card p-6 bg-slate-800/70 rounded-xl shadow-xl hover:shadow-2xl">
+                        <div class="text-cyan-400 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1v-3.25M7.25 17h9.5M3 7h18a2 2 0 012 2v6a2 2 0 01-2 2H3a2 2 0 01-2-2V9a2 2 0 012-2z"></path></svg>
                         </div>
-                        <a href="https://placeholder-project1.com" target="_blank" class="text-emerald-600 hover:text-emerald-800 font-medium self-start transition duration-150">
-                            Projeyi Görüntüle &rarr;
-                        </a>
+                        <h3 class="text-xl font-semibold text-white mb-2">Donanım & Yazılım Yönetimi</h3>
+                        <p class="text-slate-400">
+                            Eğitim ortamlarında etkin donanım (ağ, sunucu, uç cihazlar) kurulumu, bakımı ve optimizasyonu. Öğrenme yönetim sistemleri ve eğitim yazılımlarının (Python, Web Teknolojileri, vb.) entegrasyonu.
+                        </p>
                     </div>
 
-                    <!-- Proje 2 -->
-                    <div class="bg-gray-50 p-6 rounded-xl card-shadow flex flex-col hover:shadow-xl transition duration-300">
-                        <!-- Yeni Eklenen Proje Görseli -->
-                        <img src="https://placehold.co/400x200/93c5fd/1f2937?text=Sohbet+Uygulamasi" alt="Gerçek Zamanlı Sohbet Uygulaması Önizlemesi" class="mb-4 rounded-lg w-full h-auto object-cover">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Gerçek Zamanlı Sohbet Uygulaması</h3>
-                        <p class="text-gray-600 mb-4 flex-grow">Firebase Firestore ve WebSocket kullanarak geliştirilmiş, anlık mesajlaşma ve çoklu kullanıcı desteği sunan gerçek zamanlı bir sohbet arayüzü.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-red-200 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Firebase</span>
-                            <span class="bg-yellow-200 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">TypeScript</span>
-                            <span class="bg-purple-200 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Tailwind CSS</span>
+                    <!-- 2. Yapay Zeka (AI) -->
+                    <div class="digital-card p-6 bg-slate-800/70 rounded-xl shadow-xl hover:shadow-2xl">
+                        <div class="text-green-400 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 10h2m10 0h2M3 14h2m10 0h2M1 18h2m10 0h2M7 5a2 2 0 012-2h6a2 2 0 012 2v14a2 2 0 01-2 2H9a2 2 0 01-2-2V5z"></path></svg>
                         </div>
-                        <a href="https://placeholder-project2.com" target="_blank" class="text-emerald-600 hover:text-emerald-800 font-medium self-start transition duration-150">
-                            Projeyi Görüntüle &rarr;
-                        </a>
+                        <h3 class="text-xl font-semibold text-white mb-2">Yapay Zeka (AI) Entegrasyonu</h3>
+                        <p class="text-slate-400">
+                            Eğitimde yapay zeka araçlarının kullanımı, öğrenci performans analizinde AI modellerinin uygulanması ve kişiselleştirilmiş öğrenme deneyimleri tasarlama.
+                        </p>
                     </div>
 
-                    <!-- Proje 3 -->
-                    <div class="bg-gray-50 p-6 rounded-xl card-shadow flex flex-col hover:shadow-xl transition duration-300">
-                        <!-- Yeni Eklenen Proje Görseli -->
-                        <img src="https://placehold.co/400x200/fcd34d/1f2937?text=Dashboard+Grafikler" alt="Veri Görselleştirme Panosu Önizlemesi" class="mb-4 rounded-lg w-full h-auto object-cover">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Veri Görselleştirme Panosu</h3>
-                        <p class="text-gray-600 mb-4 flex-grow">Büyük veri setlerinden alınan bilgileri D3.js ve React kullanarak interaktif grafikler ve tablolar halinde sunan bir yönetim paneli (dashboard).</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-teal-200 text-teal-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">D3.js</span>
-                            <span class="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">React</span>
-                            <span class="bg-indigo-200 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">API Entegrasyonu</span>
+                    <!-- 3. Proje Geliştirme ve Yönetimi -->
+                    <div class="digital-card p-6 bg-slate-800/70 rounded-xl shadow-xl hover:shadow-2xl">
+                        <div class="text-purple-400 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 012 2v1h5.5a2.5 2.5 0 012.5 2.5v7.5a2 2 0 01-2 2H5a2 2 0 01-2-2v-7.5a2.5 2.5 0 012.5-2.5H11V6a2 2 0 012-2z"></path></svg>
                         </div>
-                        <a href="https://placeholder-project3.com" target="_blank" class="text-emerald-600 hover:text-emerald-800 font-medium self-start transition duration-150">
-                            Projeyi Görüntüle &rarr;
-                        </a>
+                        <h3 class="text-xl font-semibold text-white mb-2">Proje Geliştirme ve Yönetimi</h3>
+                        <p class="text-slate-400">
+                            Yerel, ulusal ve uluslararası (örn. Erasmus+) fonlara yönelik proje fikirleri geliştirme, hibe başvuruları yazma ve uygulama süreçlerini koordine etme.
+                        </p>
                     </div>
 
-                    <!-- Proje 4 -->
-                    <div class="bg-gray-50 p-6 rounded-xl card-shadow flex flex-col hover:shadow-xl transition duration-300">
-                        <!-- Yeni Eklenen Proje Görseli -->
-                        <img src="https://placehold.co/400x200/f9a8d4/1f2937?text=Blog+Sayfasi" alt="Mobil Uyumlu Blog Sistemi Önizlemesi" class="mb-4 rounded-lg w-full h-auto object-cover">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Mobil Uyumlu Blog Sistemi</h3>
-                        <p class="text-gray-600 mb-4 flex-grow">SEO dostu, hızlı yüklenen ve tamamen duyarlı bir içerik yönetim sistemi (CMS) destekli blog sitesi.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-yellow-200 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Next.js</span>
-                            <span class="bg-pink-200 text-pink-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Markdown</span>
-                            <span class="bg-gray-200 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Sıfır Konfigürasyon</span>
+                    <!-- 4. Stratejik Planlama -->
+                    <div class="digital-card p-6 bg-slate-800/70 rounded-xl shadow-xl hover:shadow-2xl">
+                        <div class="text-yellow-400 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 00-2 2v3m2-3a2 2 0 012 2v3m-3 3h6M9 13h6M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                         </div>
-                        <a href="https://placeholder-project4.com" target="_blank" class="text-emerald-600 hover:text-emerald-800 font-medium self-start transition duration-150">
-                            Projeyi Görüntüle &rarr;
-                        </a>
+                        <h3 class="text-xl font-semibold text-white mb-2">Stratejik Plan & Brifing</h3>
+                        <p class="text-slate-400">
+                            Eğitim kurumları için teknoloji entegrasyonu odaklı stratejik planların hazırlanması, üst yönetime bilişim brifingleri sunulması ve yol haritası belirlenmesi.
+                        </p>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- İletişim Bölümü -->
-        <section id="iletisim" class="bg-gray-800 section-padding">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
-                <h2 class="text-4xl font-extrabold text-white text-center mb-12">İletişim</h2>
+                    <!-- 5. Akademik/Araştırma İzinleri -->
+                    <div class="digital-card p-6 bg-slate-800/70 rounded-xl shadow-xl hover:shadow-2xl">
+                        <div class="text-red-400 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0v4m-5 4h2a4 4 0 004-4v-1.5a2.5 2.5 0 00-2.5-2.5h-3A2.5 2.5 0 006 12.5v1.5a4 4 0 004 4z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Akademik/Araştırma İzinleri</h3>
+                        <p class="text-slate-400">
+                            Eğitim araştırmaları ve veri toplama süreçlerinde gerekli olan resmi izinlerin (MEB vb.) alınması konusunda danışmanlık ve süreç yönetimi deneyimi.
+                        </p>
+                    </div>
 
-                <div class="bg-gray-700 p-8 rounded-xl card-shadow">
-                    <p class="text-lg text-gray-300 text-center mb-8">Yeni projeler, iş teklifleri veya sadece bir merhaba demek için aşağıdaki formu kullanabilir veya sosyal medya hesaplarımdan bana ulaşabilirsiniz.</p>
+                    <!-- 6. Web ve Uygulama Yazılımı -->
+                    <div class="digital-card p-6 bg-slate-800/70 rounded-xl shadow-xl hover:shadow-2xl">
+                        <div class="text-blue-400 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 4l-4 4 4 4"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Web ve Uygulama Yazılımı</h3>
+                        <p class="text-slate-400">
+                            Web tabanlı uygulamalar, öğrenme araçları ve özel yazılımların geliştirilmesi. Kullanıcı odaklı (UX/UI) çözümlerle öğrenme verimliliğini artırma.
+                        </p>
+                    </div>
                     
-                    <form id="contact-form" class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Adınız Soyadınız</label>
-                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 rounded-lg bg-gray-600 text-white border border-gray-500 focus:border-emerald-500 focus:ring-emerald-500" placeholder="Tam Adınız">
+                    <!-- 7. TÜBİTAK Proje Danışmanlığı (YENİ) -->
+                    <div class="digital-card p-6 bg-slate-800/70 rounded-xl shadow-xl hover:shadow-2xl">
+                        <div class="text-indigo-400 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1v-3.25M7.25 17h9.5M3 7h18a2 2 0 012 2v6a2 2 0 01-2 2H3a2 2 0 01-2-2V9a2 2 0 012-2z"></path></svg>
                         </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">E-posta Adresiniz</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-lg bg-gray-600 text-white border border-gray-500 focus:border-emerald-500 focus:ring-emerald-500" placeholder="ornek@mail.com">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Mesajınız</label>
-                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 rounded-lg bg-gray-600 text-white border border-gray-500 focus:border-emerald-500 focus:ring-emerald-500" placeholder="Proje detayları veya mesajınız..."></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-3 border border-transparent text-base font-medium rounded-lg text-gray-900 bg-emerald-400 hover:bg-emerald-300 transition duration-300 ease-in-out shadow-lg">
-                            Mesajı Gönder
-                        </button>
-                    </form>
+                        <h3 class="text-xl font-semibold text-white mb-2">TÜBİTAK Proje Danışmanlığı</h3>
+                        <p class="text-slate-400">
+                            Ortaokul ve lise düzeyinde 4006/2204 projeleri için danışmanlık, bilimsel araştırma metodolojisi rehberliği ve raporlama süreçlerinin yönetilmesi.
+                        </p>
+                    </div>
 
-                    <!-- Sosyal Medya -->
-                    <div class="mt-10 pt-6 border-t border-gray-600 text-center">
-                        <p class="text-gray-300 mb-4">Beni Sosyal Medyada Takip Edin:</p>
-                        <div class="flex justify-center space-x-6">
-                            <!-- GitHub Icon -->
-                            <a href="https://github.com/selimevrenturhan" target="_blank" class="text-gray-300 hover:text-emerald-400 transition duration-150 ease-in-out">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.087-.731.084-.716.084-.716 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.304.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.118-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.292-1.552 3.3-.879 3.3-.879.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.923.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.792 24 17.306 24 12 24 5.373 18.627 0 12 0z"/></svg>
-                            </a>
-                            <!-- LinkedIn Icon -->
-                            <a href="https://linkedin.com/in/selimevrenturhan" target="_blank" class="text-gray-300 hover:text-emerald-400 transition duration-150 ease-in-out">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.535-4 0v5.604h-3v-11h3v1.765c1.395-2.536 4-2.73 4-2.73s.772-2.02 3-2.02v13.987z"/></svg>
-                            </a>
-                            <!-- Placeholder Email Link -->
-                            <a href="mailto:selim.e.turhan@ornek.com" class="text-gray-300 hover:text-emerald-400 transition duration-150 ease-in-out">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm6.623 12.771l-6.623 5.229v-10.804l6.623 5.575zm-3.841-4.275l2.842-2.266 7.421 6.331 7.218-6.191 2.906 2.531v-14.204h-24v10.804l6.623 5.575zm20.841-5.275l-6.623-5.229v10.804l6.623-5.575z"/></svg>
-                            </a>
+                    <!-- 8. Teknofest Yarışmaları Koordinasyonu (YENİ) -->
+                    <div class="digital-card p-6 bg-slate-800/70 rounded-xl shadow-xl hover:shadow-2xl">
+                        <div class="text-pink-400 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
                         </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Teknofest Yarışmaları Koordinasyonu</h3>
+                        <p class="text-slate-400">
+                            Öğrenci takımlarının Yazılım, Yapay Zeka, İnsansız Hava Araçları (İHA) gibi kategorilerde proje geliştirmelerine liderlik etme ve mentörlük yapma.
+                        </p>
+                    </div>
+
+                    <!-- 9. eTwinning Proje Liderliği (YENİ) -->
+                    <div class="digital-card p-6 bg-slate-800/70 rounded-xl shadow-xl hover:shadow-2xl">
+                        <div class="text-orange-400 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">eTwinning Proje Liderliği</h3>
+                        <p class="text-slate-400">
+                            Avrupa okulları arasında işbirliği projeleri oluşturma, uluslararası ortaklarla iletişim kurma ve proje süreçlerini yöneterek kalite etiketi alma.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Alt Kısım (Footer) -->
-    <footer class="bg-gray-900 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
-            <p>&copy; <span id="current-year"></span> Selim Evren Turhan. Tüm Hakları Saklıdır.</p>
-            <p class="text-sm mt-2">Bu portfolyo web sitesi şablon olarak oluşturulmuştur.</p>
-        </div>
-    </footer>
+        <!-- 3. Projeler Bölümü -->
+        <section id="projeler" class="py-24 bg-slate-800 border-t border-b border-cyan-700/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title text-4xl font-bold text-white text-center">Yönetilen Proje Logları</h2>
 
-    <script>
-        // Navigasyon ve Dinamik İşlevler
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Footer Yılını Güncelle
-            document.getElementById('current-year').textContent = new Date().getFullYear();
+                <div class="space-y-10">
 
-            // 2. Mobil Menü Toggle İşlevi
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
+                    <!-- Proje 1: Uluslararası Yapay Zeka Projesi -->
+                    <div class="digital-card bg-slate-700/50 p-6 rounded-xl shadow-xl md:flex items-start">
+                        <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
+                            <span class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-cyan-600 text-white font-bold text-xl shadow-neon-sm">
+                                AI
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-white mb-2">Uluslararası Eğitimde Yapay Zeka</h3>
+                            <p class="text-sm font-medium text-cyan-400 mb-3">Uluslararası Proje | 2023-2025</p>
+                            <p class="text-slate-300">
+                                Çok uluslu ortaklarla yürütülen, lise öğrencileri için kişiselleştirilmiş öğrenme yolları sunan bir AI tabanlı değerlendirme sistemi geliştirilmesi. Proje, 3 farklı ülkenin eğitim sistemine entegrasyonu hedeflemiştir.
+                            </p>
+                        </div>
+                    </div>
 
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                // Buton ikonunu değiştir
-                const iconOpen = mobileMenuButton.querySelector('.block');
-                const iconClose = mobileMenuButton.querySelector('.hidden');
-                iconOpen.classList.toggle('hidden');
-                iconClose.classList.toggle('block');
-            });
-            
-            // 3. İletişim Formu İşleme (Placeholder)
-            const contactForm = document.getElementById('contact-form');
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                // Basit bir mesaj göster
-                const submitButton = contactForm.querySelector('button[type="submit"]');
-                submitButton.textContent = 'Mesajınız Başarıyla İletildi!';
-                submitButton.classList.remove('bg-emerald-400', 'hover:bg-emerald-300');
-                submitButton.classList.add('bg-green-500', 'hover:bg-green-600');
-                
-                // Formu devre dışı bırak
-                contactForm.querySelectorAll('input, textarea, button').forEach(el => el.disabled = true);
+                    <!-- Proje 2: Yerel Donanım ve Ağ Altyapısı Yenileme -->
+                    <div class="digital-card bg-slate-700/50 p-6 rounded-xl shadow-xl md:flex items-start">
+                        <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
+                            <span class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-green-600 text-white font-bold text-xl shadow-neon-sm">
+                                HW
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-white mb-2">Okul Ağ Altyapısı ve Laboratuvar Modernizasyonu</h3>
+                            <p class="text-sm font-medium text-green-400 mb-3">Yerel Proje | 2022</p>
+                            <p class="text-slate-300">
+                                Okulun tüm bilişim laboratuvarlarının sıfırdan planlanması, enerji verimli donanımla güncellenmesi ve fiber optik omurga üzerine kurulu güvenli bir yerel ağ (LAN) altyapısının kurulması.
+                            </p>
+                        </div>
+                    </div>
 
-                // Gerçek bir uygulamada burada bir API çağrısı yapılırdı
-                console.log('Form verileri gönderildi (Bu bir demo mesajıdır):', {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    message: document.getElementById('message').value
-                });
-            });
-        });
+                    <!-- Proje 3: Kurumsal Stratejik Plan Dokümantasyonu -->
+                    <div class="digital-card bg-slate-700/50 p-6 rounded-xl shadow-xl md:flex items-start">
+                        <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
+                            <span class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-yellow-600 text-white font-bold text-xl shadow-neon-sm">
+                                SP
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-white mb-2">2024-2028 Kurumsal Teknoloji Stratejik Planı</h3>
+                            <p class="text-sm font-medium text-yellow-400 mb-3">Ulusal Çalışma | Stratejik Plan</p>
+                            <p class="text-slate-300">
+                                Kurumun gelecek 4 yıllık bilişim hedeflerini, bütçe öngörülerini ve dijital dönüşüm adımlarını içeren detaylı stratejik planın hazırlanması ve üst birimlere sunulması.
+                            </p>
+                        </div>
+                    </div>
 
-        // 4. Smooth Scrolling İşlevi (Tarayıcı desteği için)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+                </div>
+            </div>
+        </section>
 
+        <!-- 4. İletişim ve Çağrı Bölümü (Daha Vurgulu) -->
+        <section id="iletisim" class="py-24 bg-slate-900">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white p-8 rounded-xl bg-cyan-700/20 border-2 border-cyan-500 shadow-neon-sm">
+                <h2 class="text-4xl font-bold mb-4 text-cyan-400">Sistem Bağlantısı Kur</h2>
+                <p class="text-xl mb-8 opacity-90">
+                    Siber güvenlik, proje geliştirme veya stratejik teknoloji danışmanlığı konularında işbirliği için hemen veri transferi başlatın.
+                </p>
+                <!-- E-posta adresi görünmeyecek şekilde sadece mailto bağlantısı güncellendi -->
+                <a href="mailto:selimturhan9@gmail.com" class="inline-flex items-center px-10 py-4 text-lg font-bold rounded-xl text-slate-900 bg-cyan-400 hover:bg-cyan-300 transition duration-500 transform hover:scale-110 shadow-neon-lg">
+                    VERİ TRANSFERİ BAŞLAT (E-POSTA)
+                </a>
+                <!-- E-posta adresi gizlendiği için bu kısım kaldırıldı. -->
+            </div>
+        </section>
+
+        <!-- Footer (Siyah) -->
+        <footer class="bg-slate-950 text-slate-500 py-6 border-t border-cyan-700/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+                <p>&copy; 2024 Selim Evren Turhan | BÖTE Portfolyo. Tüm hakları saklıdır. Protokol Sürümü 1.2</p>
+                <div class="mt-2 space-x-4">
+                    <a href="#hakkimda" class="hover:text-cyan-400">Ana Protokol</a>
+                    <a href="#" class="hover:text-cyan-400">Gizlilik Verileri</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
 </body>
 </html>
